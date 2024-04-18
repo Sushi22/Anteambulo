@@ -1,2 +1,2 @@
 # Anteambulo
-An AI assistant to clear your debugging path
+An AI assistant which helps in clearing your debugging path
