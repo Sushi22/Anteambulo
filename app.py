@@ -6,13 +6,6 @@ from graph import debug_graph
 app = Flask(__name__)
 
 
-@app.route("/")
-def fetch_from_grafana():
-    headers = {
-        'Authorization': 'Bearer <YOUR_API_KEY>'
-    }
-
-
 @app.route('/getAll', methods=['GET'])
 def get_nodes():
     return jsonify({"data": debug_graph.graph["issues"]})

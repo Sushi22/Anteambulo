@@ -9,6 +9,7 @@ class Graph:
 
 debug_graph = Graph()
 
+
 debug_graph.add_edge("issues", "Increased Latency at the Service Layer Across All/Specific APIs")
 debug_graph.add_edge("issues","Service API Throwing 5xx")
 
@@ -40,6 +41,9 @@ debug_graph.add_edge("Service API Throwing 5xx", "Check receent code changes")
 debug_graph.add_edge("Service API Throwing 5xx", "Check server logs")
 debug_graph.add_edge("503", "Temporary server load")
 debug_graph.add_edge("502", "Issue with external service")
+
+
+
 
 
 
