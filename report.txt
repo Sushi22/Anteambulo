@@ -1,0 +1,26 @@
+Report on Service Disruption: Flock
+
+Date: 18th April 2024
+Time: 10:00:00 - 15:00:00
+
+Introduction:
+
+This report provides a detailed analysis of the service disruption that occurred on the Flock service on 18th April 2024. The disruption lasted for approximately five hours, starting from 10:00:00 and ending at 15:00:00. 
+
+Debugging Process:
+
+The following steps were undertaken to debug the issue:
+
+1. Container Restarts: The first step in the debugging process was to restart the containers. This is a common troubleshooting step that can resolve many issues by resetting the state of the service.
+
+2. CPU Throttling: The next step was to implement CPU throttling. This involves limiting the CPU usage of the service to prevent it from consuming too many resources and causing a system-wide slowdown or crash.
+
+3. Thread Waiting Queue Size Exceeded: It was observed that the size of the thread waiting queue had exceeded its limit. This can cause a service to become unresponsive, as it is unable to process new requests. The queue size was reduced to bring it back within its limit.
+
+4. Manage Resources for Fix: The final step was to manage resources to fix the issue. This involved reallocating resources to the service, ensuring that it had enough resources to function correctly.
+
+Conclusion:
+
+The service disruption on Flock was successfully resolved through a series of debugging steps. These steps included container restarts, CPU throttling, reducing the thread waiting queue size, and managing resources. The service was restored to full functionality at 15:00:00 on 18th April 2024. 
+
+It is recommended that regular monitoring and maintenance be carried out to prevent similar issues from occurring in the future. This includes monitoring resource usage and queue sizes, and ensuring that resources are allocated appropriately.

@@ -5,6 +5,10 @@ from time import strftime, localtime
 import datetime
 import pymongo
 
+
+load_dotenv()
+api_key = os.environ.get("API_KEY")
+
 # Connect to MongoDB
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["anteambulo"]
@@ -17,12 +21,14 @@ class DashboardIds:
 class QueryNotFoundException(Exception):
     pass
 
+load_dotenv()
+api_key = os.environ.get("API_KEY")
 
 
 def fetch_dashboard_json(dashboard_uid):
     url  = "https://grafana-k8s-ci.myntra.com/api/dashboards/uid/"
     url = url + dashboard_uid
-    response = requests.get(url, headers={"Authorization": "Bearer glsa_5ZEeWm4bQxsWiG3GcNfyXz802AgzLuZU_204115a7"})
+    response = requests.get(url, headers={"Authorization": "Bearer {api_key}"})
     return response.json()
 
 

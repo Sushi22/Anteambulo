@@ -6,6 +6,12 @@ import datetime
 import pymongo
 from string import Template
 import uuid
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+api_key = os.environ.get("API_KEY")
+
 
 # Connect to MongoDB
 client = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -24,7 +30,7 @@ class QueryNotFoundException(Exception):
 def fetch_dashboard_json(dashboard_uid):
     url  = "https://grafana-k8s-ci.myntra.com/api/dashboards/uid/"
     url = url + dashboard_uid
-    response = requests.get(url, headers={"Authorization": "Bearer glsa_5ZEeWm4bQxsWiG3GcNfyXz802AgzLuZU_204115a7"})
+    response = requests.get(url, headers={"Authorization": f"Bearer {api_key}"})
     return response.json()
 
 
@@ -146,7 +152,7 @@ def create_dataframe_for_correlation(concerned_df, reference_df, start, end):
     end_time = datetime.datetime.fromtimestamp(end).time()
     df = concerned_df
     date_dic = {}
-    for row in reference_df.iterrows():
+    for _, row in reference_df.iterrows():
         data = row["data"]
         timestamp = row["timestamp"]
         datetime_ = datetime.datetime.fromtimestamp(timestamp)
