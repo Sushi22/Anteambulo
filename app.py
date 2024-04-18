@@ -14,7 +14,22 @@ def get_nodes():
 @app.route('/getAnswer', methods=['GET'])
 def get_node_response():
     param_value = request.args.get('selected_option')
-    return jsonify({"data" : debug_graph.graph[param_value]})
+    print("param: ", param_value)
+    options_list = debug_graph.graph[param_value]
+    print("option list: ", options_list)
+    response_list = []
+    for val in options_list:
+        print("val: ", val)
+        result = val.split(",")
+        obj = {
+        "text" : result[0],
+        "listLinks" : result[1].split("$") if len(result) > 1 else []
+        }
+        response_list.append(obj)
+    print(options_list)
+    return jsonify({"data" : response_list})
+
+
 
 @app.route('/addIssueNode', methods=['POST'])
 def add_issue_node():
@@ -22,7 +37,7 @@ def add_issue_node():
     debug_graph.add_edge("issues",body_json["data"])
 
 @app.route('/addOptionNode', methods=['POST'])
-def add_option_node();
+def add_option_node():
     body_json = request.json
     debug_graph.add_edge(body_json['key'],body_json['value'])
     
@@ -30,4 +45,40 @@ def add_option_node();
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
