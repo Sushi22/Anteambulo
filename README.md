@@ -1,5 +1,5 @@
 # Anteambulo
-An AI assistant to clear your debugging pathig tu
+An AI assistant which helps in clearing your debugging path
 
 # Steps
 1. Make a python virtual env<br>
