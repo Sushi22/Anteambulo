@@ -1,15 +1,21 @@
 import openai
 
-api_key = ""
-openai.api_key = api_key
+openai.api_key = "f5b55c3f2f504eb3a63c1875b0241ce2"
+openai.api_base =  "https://sysops-28015.openai.azure.com/" 
+openai.api_type = 'azure'
+openai.api_version = '2024-02-15-preview'
 
-endpoint = "https://sysops-28015.openai.azure.com/"
+def get_gpt_response(system_content, user_content):
+    response = openai.ChatCompletion.create(
+        engine='SYSOPS-28015', 
+        messages=get_prompt_message(system_content, user_content),
+        max_tokens=1000,
+        temperature=0
+    )
+    return response["choices"][0]["message"]["content"]
 
-question = "What is the capital of France?"
-response = openai.Completion.create(
-  engine="gpt-4-turbo", 
-  prompt=question,
-  max_tokens=50 
-)
+def get_prompt_message(system_content, user_content):
+    message = [{"role":"system", "content":system_content},{"role":"user", "content":user_content}]
+    return message
 
-print(response.choices[0].text.strip())
+print(get_gpt_response("Rephrase the sentence into a humble way", "I work at Myntra"))

@@ -16,10 +16,6 @@ def get_node_response():
     param_value = request.args.get('selected_option')
     return jsonify({"data" : debug_graph.graph[param_value]})
 
-
-@app.route('/addNode', methods=['POST'])
-def add_node
-
     
 
 if __name__ == '__main__':
