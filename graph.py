@@ -3,9 +3,6 @@ class Graph:
     def __init__(self):
         self.graph = {}
 
-
-    def add_node(self, )
-
     def add_edge(self, u, v):
         if u not in self.graph:
             self.graph[u] = []
