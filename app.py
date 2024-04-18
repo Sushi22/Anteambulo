@@ -2,6 +2,8 @@ from flask import Flask,request, jsonify
 import requests
 from graph import debug_graph
 from flask_cors import CORS
+from gpt import get_gpt_response
+from template import create_template
 
 
 app = Flask(__name__)
@@ -10,6 +12,15 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 @app.route('/getAll', methods=['GET'])
 def get_nodes():
     return jsonify({"data": debug_graph.graph["issues"]})
+
+
+@app.route('/getReport', methods=['POST'])
+def get_report():
+    data = request.json
+    issue = data["issue"]
+    options = data["options"]
+    report = get_gpt_response("Elaborate the following conclusions for issue analysis", create_template(issue,options))
+    return jsonify({"data": report})
 
 
 @app.route('/getAnswer', methods=['GET'])
@@ -42,7 +53,6 @@ def add_issue_node():
 def add_option_node():
     body_json = request.json
     debug_graph.add_edge(body_json['key'],body_json['value'])
-    
     
 
 if __name__ == '__main__':
