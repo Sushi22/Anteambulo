@@ -7,7 +7,7 @@ from template import create_template
 
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/getAll', methods=['GET'])
 def get_nodes():

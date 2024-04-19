@@ -14,12 +14,10 @@ def create_template(issue_type, selected_options):
 
         <h2>Steps used to debug<h2>
         <div>
-        <p>{selected_options[0]}</p>
-        <p>{selected_options[1]}</p>
-        <p>{selected_options[2]}</p>
-        <p>{selected_options[3]}</p>
+        {% for option in selected_options %}
+            <p>{{ option }}</p>
+        {% endfor %}
         </div>
-
     </body>
     </html>
     """
